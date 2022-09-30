@@ -24,12 +24,16 @@ router.post("/api/user", async (req, res) => {
 router.post("/api/login", async (req, res) => {
 
   const { email, password } = req.body;
-  const found = await USER.findOne({ email });
-  if (found) {
-    if (password === found.user.password) res.send(true);
+  console.log(email + " " + password);
+  USER.findOne({ email }).then((found) => {
+    if (found) {
+      console.log(found);
+      if (password === found.user.password) res.send(found);
+      else res.send(false);
+    }
     else res.send(false);
-  }
-  else res.send(false);
+  }).catch((err) => console.log(err));
+  
 });
 
 module.exports = router;
