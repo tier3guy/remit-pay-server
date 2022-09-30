@@ -17,7 +17,7 @@ router.post("/api/user", async (req, res) => {
 
     const result = await user.save();
     if (result) res.send("\n>> Data have been saved successfully !");
-    else res.send("\n>> Some error has been occured while saving the data");
+    else res.send("\n>> Some error has been occurred while saving the data");
   }
 });
 
@@ -28,7 +28,7 @@ router.post("/api/login", async (req, res) => {
   
   USER.findOne({ email })
     .then((found) => { res.send(found); })
-    .catch((err) => console.log(err));
+    .catch((err) => res.send(err));
   
 });
 
