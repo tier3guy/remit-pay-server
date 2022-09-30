@@ -26,6 +26,8 @@ router.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
   console.log(email + " " + password);
   USER.findOne({ email }).then((found) => {
+  
+    res.send(found);
     if (found) {
       console.log(found);
       res.send(found);
