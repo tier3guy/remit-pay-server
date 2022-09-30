@@ -10,7 +10,7 @@ router.post("/api/user", async (req, res) => {
   const { name, email, password, phone, accounts } = req.body;
 
   const found = await USER.findOne({ email });
-  if(found) res.send("\n>> User already exists.");
+  if(found) res.send(false);
   else {
     
     const user = new USER({ email, user: { password, name, phone, accounts } });
