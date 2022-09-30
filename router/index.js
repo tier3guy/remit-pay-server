@@ -28,8 +28,7 @@ router.post("/api/login", async (req, res) => {
   USER.findOne({ email }).then((found) => {
     if (found) {
       console.log(found);
-      if (password === found.user.password) res.send(found);
-      else res.send(false);
+      res.send(found);
     }
     else res.send(false);
   }).catch((err) => console.log(err));
