@@ -16,8 +16,8 @@ router.post("/api/user", async (req, res) => {
     const user = new USER({ email, user: { password, name, phone, accounts } });
 
     const result = await user.save();
-    if (result) res.send("\n>> Data have been saved successfully !");
-    else res.send("\n>> Some error has been occured while saving the data");
+    if (result) res.send(true);
+    else res.send(false);
   }
 });
 
