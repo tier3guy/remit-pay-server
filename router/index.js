@@ -25,15 +25,10 @@ router.post("/api/login", async (req, res) => {
 
   const { email, password } = req.body;
   console.log(email + " " + password);
-  USER.findOne({ email }).then((found) => {
   
-    res.send(found);
-    if (found) {
-      console.log(found);
-      res.send(found);
-    }
-    else res.send(false);
-  }).catch((err) => console.log(err));
+  USER.findOne({ email })
+    .then((found) => { res.send(found); })
+    .catch((err) => console.log(err));
   
 });
 
